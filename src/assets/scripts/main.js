@@ -11,9 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const filterButtonProjects = document.getElementById('filterButtonProjects');
   const filterButtonRecent = document.getElementById('filterButtonRecent');
   const filterButtonTeams = document.getElementById('filterButtonTeams');
-  const items = document.getElementsByClassName("card-grid__item"); 
+  const items = document.getElementsByClassName("card-grid__item");
   const modal = document.getElementById('dialog');
   const modalContent = document.querySelector('.modal__content');
+  const modalKey = document.getElementById('modalKey');
   const navbar = document.querySelector('.navbar');
   const searchClearButton = document.querySelector('.search-form__button');
   const searchInput = document.querySelector('.search-form__input');
@@ -118,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
     modal.hidden = true;
   }
 
+  // Show the modal and display the modal and stop the body being scrolled.
   function displayModal(e) {
     if (typeof modal.showModal === 'function') {
       modal.showModal();
@@ -125,11 +127,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  const modalKey = document.getElementById('modalKey');
-
+  // Listen for clicks on the keyboard key button.
   modalKey.addEventListener('click', displayModal);
 
-  // When the user hits cmd/ctrl + J, display the modal and stop the body being scrolled.
+  // When the user hits cmd/ctrl + J, call the displayModal function.
   document.addEventListener('keydown', function(e) {
     if (e.code === 'KeyJ' && (e.ctrlKey || e.metaKey) && !(e.shiftKey || e.altKey)) {
       displayModal(e);
@@ -187,14 +188,16 @@ document.addEventListener('DOMContentLoaded', function () {
     toggleEmptyState();
   })
 
-  // Turn the cards object into an array, and hide all but the first six items on mobile.
+  // Turn the cards object into an array, and remove the first six.
   let excessCards = Array.prototype.slice.call(cards);
   excessCards = excessCards.slice(6);
   
+  // Hide all but the first six cards on mobile.
   excessCards.forEach(function(item) {
     item.classList.add('card-grid__item--hide-mobile');
   });
 
+  // Listen for clicks on the 'show all' button. This displays all cards, and then removes itself from the DOM. 
   buttonShowAll.addEventListener('click', () => {
     cardGrid.classList.add('card-grid--expanded');
     buttonShowAll.remove();

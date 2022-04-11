@@ -1,0 +1,429 @@
+extends ../layouts/page.pug
+
+block prepend vars
+  -var activePage = "Home"
+  -var metaDescription = "I'm just a boy, standing in front of Basecamp, asking them to love him."
+  -var metaImage = "https://basecamp.chrisannetts.com/assets/images/meta-image.jpg"
+  -var pageTitle = "Home"
+  -var metaTitle = "Jason's Imbox. Possibly"
+  -var metaUrl = "https://bc-application.chrisannetts.com"
+  -var pageClass = "home"
+
+block pageComponents
+
+  main.main(role="main")
+
+    a.adminland(href="/5336179/account") Adminland
+
+    .content
+      section.section.section--brand
+        .section__content
+          img.section__logo(src="/assets/images/green-panda-logo.png", alt="Green Panda", height= "128", width="128")
+          button.section__edit(aria-label="Edit your account logo")
+
+      section.section.section--cards
+
+        .panel.panel--cards
+
+          .panel__header
+            h3.panel__title Projects &amp; teams
+
+          form.search-form(accept-charset="UTF-8")
+            .search-form__container
+              input.search-form__input.input(type="text", placeholder="Find a project or team…", spellcheck="false")
+              button.search-form__button.btn.btn--icon.btn--small-icon.btn--borderless.btn--close-icon(type="button", name="button", disabled) Clear
+    
+          .panel__inner
+            .filter
+              button.filter__button.filter__button--active.btn.filter__button--unfiltered(id="filterButtonDefault") Organized
+              button.filter__button.btn.filter__button--unfiltered(id="filterButtonRecent") Recently viewed
+              button.filter__button.btn(id="filterButtonPinned") Pinned
+              button.filter__button.btn(id="filterButtonProjects") Projects
+              button.filter__button.btn(id="filterButtonTeams") Teams
+
+            ul.card-grid.card-grid--unfiltered.u-list-unstyled
+
+              li.card-grid__item(data-tags="pinned")
+                +card({
+                  heading: "Green Panda HQ",
+                  text: "Company-wide announcements and stuff everyone needs to know.",
+                  people: "44",
+                  context: "hq",
+                  pinned: true
+                })
+
+              li.card-grid__item(data-tags="pinned")
+                +card({
+                  heading: "Green Panda Charity Marathon",
+                  text: "A place for the runners among us to talk tactics, nutrition, and plan.",
+                  people: "10",
+                  pinned: true
+                })
+
+              li.card-grid__item(data-tags="pinned")
+                +card({
+                  heading: "Panda's 10 year birthday",
+                  text: "It's not every day you turn 10. Planning and updates in here.",
+                  people: "20",
+                  pinned: true
+                })
+
+              li.card-grid__item(data-tags="pinned project")
+                +card({
+                  heading: "Redesigning greenpanda.com",
+                  text: "Early discussions and ideas on where to take the Panda website.",
+                  people: "3",
+                  pinned: true
+                })
+
+              li.card-grid__item(data-tags="pinned")
+                +card({
+                  heading: "Rebranding Green Panda",
+                  text: "Concepts and company-wide updates on redeveloping the Panda brand.",
+                  people: "4",
+                  pinned: true
+                })
+
+              li.card-grid__item(data-tags="pinned")
+                +card({
+                  heading: "Office Renovation",
+                  text: "One-stop shop for all things regarding the shiny new office.",
+                  people: "13",
+                  pinned: true
+                })
+
+              li.card-grid__item(data-tags="pinned")
+                +card({
+                  heading: "Panda Podcast",
+                  text: "Ideas and planning, and generally anything to with the podcast.",
+                  people: "4",
+                  pinned: true
+                })
+
+              li.card-grid__item(data-tags="team")
+                +card({
+                  heading: "Accessibility specialists",
+                  text: "A place for the acessibility team to hang-out, share ideas, and ask for accessibility-specific input.",
+                  people: "3",
+                  context: "team"
+                })
+
+              li.card-grid__item(data-tags="project")
+                +card({
+                  heading: "Boots.com Redesign",
+                  text: "Discussions, ideas, and progress updates about the Boots redesign.",
+                  people: "4",
+                  brand: "boots"
+                })
+
+              li.card-grid__item(data-tags="project")
+                +card({
+                  heading: "Costa Competition Site",
+                  people: "1",
+                  brand: "costa"
+                })
+
+              li.card-grid__item(data-tags="team")
+                +card({
+                  heading: "Design Team",
+                  text: "A place for the design team to hang-out, share design inspiration, and ask for design-specific input.",
+                  people: "9",
+                  context: "team"
+                })
+
+              li.card-grid__item(data-tags="team")
+                +card({
+                  heading: "Engineering Team",
+                  text: "A place for the development team to hang-out, share ideas, and ask for development-specific input.",
+                  people: "15",
+                  context: "team"
+                })
+
+              li.card-grid__item(data-tags="project")
+                +card({
+                  heading: "Epson Brand Design",
+                  people: "3",
+                  brand: "epson"
+                })
+
+              li.card-grid__item(data-tags="project")
+                +card({
+                  heading: "Epson.com Redesign",
+                  people: "3",
+                  brand: "epson"
+                })
+
+              li.card-grid__item(data-tags="project")
+                +card({
+                  heading: "Fila Brand Exploration",
+                  text: "Discussions, ideas, and progress updates about the Fila rebrand.",
+                  people: "4",
+                  brand: "fila"
+                })
+
+              li.card-grid__item(data-tags="team")
+                +card({
+                  heading: "Finance",
+                  text: "A place for the money people to hang-out, share ideas, and ask for input around anything finacial.",
+                  people: "2",
+                  context: "team"
+                })
+
+              li.card-grid__item(data-tags="project")
+                +card({
+                  heading: "Hillarys.com Redesign",
+                  text: "A space for all things regarding the Hillarys website redesign.",
+                  people: "4",
+                  brand: "hillarys"
+                })
+
+              li.card-grid__item(data-tags="project")
+                +card({
+                  heading: "Kellogg's Brand Redesign",
+                  people: "3",
+                  brand: "kelloggs"
+                })
+
+              li.card-grid__item(data-tags="project")
+                +card({
+                  heading: "Launching Panda Analytics",
+                  text: "The best analytics software we know how to make.",
+                  people: "12"
+                })
+
+              li.card-grid__item(data-tags="team")
+                +card({
+                  heading: "Managers",
+                  text: "A place for senior management to hang-out, share big ideas, and do manager things.",
+                  people: "3",
+                  context: "team"
+                })
+
+              li.card-grid__item(data-tags="team")
+                +card({
+                  heading: "Marketing",
+                  text: "A place for the marketing team to hang-out, share ideas, and ask for marketing-specific input.",
+                  people: "5",
+                  context: "team"
+                })
+
+              li.card-grid__item(data-tags="project")
+                +card({
+                  heading: "Moonpig Competition Site",
+                  people: "4",
+                  brand: "moonpig"
+                })
+
+              li.card-grid__item(data-tags="project")
+                +card({
+                  heading: "NHS.com Redesign",
+                  text: "Let's help the NHS help a nation.",
+                  people: "4",
+                  brand: "nhs"
+                })
+
+              li.card-grid__item(data-tags="project")
+                +card({
+                  heading: "Pizza Hut Brand Redesign",
+                  people: "6",
+                  brand: "pizza-hut"
+                })
+
+              li.card-grid__item(data-tags="team")
+                +card({
+                  heading: "R&D",
+                  text: "A place for the R&D team to hang-out, share ideas, and ask for research or development input.",
+                  people: "2",
+                  context: "team"
+                })
+
+              li.card-grid__item(data-tags="project")
+                +card({
+                  heading: "Sky Competition Site Design",
+                  people: "4",
+                  brand: "sky"
+                })
+
+              li.card-grid__item(data-tags="project")
+                +card({
+                  heading: "Stella Competition Site Design",
+                  text: "Testing their product does not count as research.",
+                  people: "4",
+                  brand: "stella-artois"
+                })
+              
+            button.btn.btn--show-all.btn--secondary.btn--full-width(id="buttonShowAll", type="button") Show all 27 projects and teams
+
+          .panel__footer
+            button.btn.btn--primary Add another project or team
+            .panel__instruction
+              | Press
+              a.key(href="#", tabindex="0")
+                span &#x2318;
+                | J
+              |  anytime to jump
+
+      section.section.section--your-plate
+        .section__group
+
+          .panel
+            .panel__inner
+              .panel__header
+                h3.panel__title Your schedule
+              .panel__content
+
+                p.panel__intro
+                  | A few upcoming events &ndash;&nbsp;
+                  a.decorated(href="#") see all
+
+                .schedule
+                  h3.schedule__date Thu, Apr 7
+                  
+                  .schedule__events
+
+                      a.event.event--assignments(href="#")
+                        .event__content
+                          p.event__text 6 assignments due
+
+                      a.event.event--occasion(href="#")
+                        .event__content
+                          h4.event__title Official opening
+                          span.event__time 1:30pm - 2:00pm
+                          span.event__details Office Renovation
+
+                .schedule
+                  h3.schedule__date Fri, Apr 8
+                  
+                  .schedule__events
+
+                      a.event.event--assignments(href="#")
+                        .event__content
+                          p.event__text 2 assignments due
+
+                .schedule
+                  h3.schedule__date Mon, Apr 11
+                  
+                  .schedule__events
+
+                      a.event.event--assignments(href="#")
+                        .event__content
+                          p.event__text 1 assignment due
+
+                .schedule
+                  h3.schedule__date Wed, Apr 13
+                  
+                  .schedule__events
+
+                      a.event.event--assignments(href="#")
+                        .event__content
+                          p.event__text 4 assignments due
+
+                      a.event.event--occasion(href="#")
+                        .event__content
+                          h4.event__title Costa Pitch
+                          span.event__time 10:00am - 11:00am
+                          span.event__details Costa Competition Site
+
+                      a.event.event--occasion(href="#")
+                        .event__content
+                          h4.event__title Intro with the new designer
+                          span.event__time 2:30pm - 3:00pm
+                          span.event__details Design Team       
+
+
+
+        .section__group
+
+          .panel
+            .panel__inner
+              .panel__header
+                h3.panel__title Your assignments
+              .panel__content
+
+                p.panel__intro
+                  | Stuff due soon and recently-assigned &ndash;&nbsp;
+                  a.decorated(href="#") see all
+
+                ul.assignments.u-list-unstyled
+                  li.assignments__item
+
+                    +checkbox({
+                      name: "Does Chris need a good USB mic?",
+                      context: "Podcast setup in Panda Podcast",
+                      date: "Thu, Apr  7"
+                    })
+
+                  li.assignments__item
+
+                    +checkbox({
+                      name: "Decide on which concept to lead with",
+                      context: "Pitch planning in Costa Competition Site",
+                      date: "Thu, Apr  7"
+                    })
+
+                  li.assignments__item
+
+                    +checkbox({
+                      name: "Create a slide deck",
+                      context: "Pitch planning in Costa Competition Site",
+                      date: "Thu, Apr  7"
+                    })
+
+                  li.assignments__item
+
+                    +checkbox({
+                      name: "Buy myself a plane ticket to London",
+                      context: "Pitch planning in Costa Competition Site",
+                      date: "Thu, Apr  7"
+                    })
+
+                  li.assignments__item
+
+                    +checkbox({
+                      name: "Publish our interview to YouTube",
+                      context: "Social stuff in Marketing",
+                      date: "Thu, Apr  7"
+                    })
+
+                  li.assignments__item
+
+                    +checkbox({
+                      name: "Tweet a link to our YouTube interview",
+                      context: "Social stuff in Marketing",
+                      date: "Thu, Apr  7"
+                    })
+
+                  li.assignments__item
+
+                    +checkbox({
+                      name: "Learn the lyrics to Can't Touch This",
+                      context: "Pre-party in Panda's 10 year birthday",
+                      date: "Fri, Apr  8"
+                    })
+
+                  li.assignments__item
+
+                    +checkbox({
+                      name: "Stock up on mango lemonade and Shirley Temples",
+                      context: "Pre-party in Panda's 10 year birthday",
+                      date: "Fri, Apr  8"
+                    })
+
+                  li.assignments__item
+
+                    +checkbox({
+                      name: "Decide between Blue Capybara and Apricot Badger",
+                      context: "Tough choices in Rebranding Green Panda",
+                      date: "Mon, Apr 11"
+                    })
+
+                  li.assignments__item
+
+                    +checkbox({
+                      name: "Buy a new pair of running shoes",
+                      context: "Training in Green Panda Charity Marathon",
+                      date: "Wed, Apr 13"
+                    })
+    
+    .back-to-top.app-mobile__hide
+      button.back-to-top__button.btn.btn--icon.btn--arrow-up-icon(onclick="window.scrollTo({ top: 0, behavior: 'smooth' })") Back to top

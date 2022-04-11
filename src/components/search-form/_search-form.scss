@@ -1,0 +1,15 @@
+.search-form {
+  padding: 2rem 1.5rem 1.5rem;
+  border-bottom: var(--border-style) var(--border-width) rgba(var(--rgb-black), .1);
+  margin: 0 -.5rem;
+
+  &__container {
+    margin: 0 auto;
+    max-width: 50rem;
+    position: relative;
+  }
+  
+  &__button {
+    transition: opacity var(--animation-duration) var(--animation-timing--fast);
+  }
+}

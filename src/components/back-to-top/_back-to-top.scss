@@ -1,0 +1,41 @@
+.back-to-top {
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  width: .1rem;
+  z-index: z('back-to-top');
+
+  &__button {
+    background-color: var(--color-white--opaque);
+    background-position: center;
+    border-radius: 50%;
+    bottom: .5rem;
+    height: 4.4rem;
+    left: .5rem;
+    opacity: 0;
+    padding: 0;
+    position: fixed;
+    text-indent: -999rem;
+    transition:
+      opacity var(--animation-duration) var(--animation-timing),
+      visibility var(--animation-duration) var(--animation-timing);
+    visibility: hidden;
+    width: 4.4rem;
+
+    @media (min-width: $breakpoint-medium) {
+      background-position: 1rem center;
+      border-radius: 4.4rem;
+      bottom: 1rem;
+      height: unset;
+      left: 1rem;
+      padding: .5rem 1rem .5rem 3rem;
+      text-indent: unset;
+      width: unset;
+    }
+
+    .back-to-top--visible & {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+.event {
+  display: grid;
+  grid-template-columns: 3.4rem 1fr;
+
+  &::before {
+    background: var(--color-ink) no-repeat center;
+    background-size: 1.2rem;
+    border-radius: 50%;
+    content: '';
+    display: inline-block;
+    height: 2.4rem;
+    width: 2.4rem;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }  
+
+  &--assignments {
+    align-items: center;
+
+    &::before {
+      background-image: url('/assets/images/check.svg');
+    }
+  }
+  
+  &--occasion {
+    align-items: start;
+
+    &::before {
+      background-image: url('/assets/images/schedule.svg');
+    }
+
+    .event__content {
+      margin-top: .3rem;
+    }
+  }
+
+  &__time {
+    color: var(--color-bronze);
+    font-size: 1.4rem;
+    font-weight: normal;
+  }
+  
+  &__details {
+    color: var(--color-text--subtle);
+    display: block;
+    font-size: 1.4rem;
+  }
+  
+  &__title {
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  &__text {
+    margin: 0;
+  }
+}

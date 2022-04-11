@@ -1,0 +1,7 @@
+node_modules
+code/lib
+dist/*
+!dist/CNAME
+.publish
+npm-debug.log
+.DS_Store

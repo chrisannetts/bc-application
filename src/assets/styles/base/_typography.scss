@@ -1,0 +1,15 @@
+a {
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+}
+
+code {
+  font-family: var(--font-family--mono);
+  font-size: 1.6rem;
+}
+
+.decorated {
+  color: var(--color-blue);
+  text-decoration: underline;
+}

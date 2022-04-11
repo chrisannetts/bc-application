@@ -1,0 +1,14 @@
+.filter {
+  margin: -0.2rem 0 1.3rem;
+  text-align: center;
+
+  &__button {
+    margin: .2rem;
+
+    &--active {
+      background-color: var(--color-ink);
+      border-color: var(--color-ink);
+      color: var(--color-white);
+    }
+  }
+}

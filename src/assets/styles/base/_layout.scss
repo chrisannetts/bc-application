@@ -1,0 +1,31 @@
+.site-content {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--padding-body));
+}
+
+.main {
+  flex: 1;
+  padding: 0 var(--padding-page);
+  position: relative;
+}
+
+.content {
+  display: grid;
+  gap: 2rem;
+  grid-template-areas:
+  "brand"
+  "cards"
+  "your-plate";
+  height: 100%;
+  margin: auto;
+  max-width: var(--content-width);
+
+  @media (min-width: $breakpoint-huge) {
+    grid-template-areas:
+      "cards brand"
+      "cards your-plate";
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: min-content 1fr;
+  }
+}

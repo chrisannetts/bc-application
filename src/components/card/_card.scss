@@ -1,0 +1,114 @@
+.card {
+  background: var(--color-bg--surface) url('/assets/images/pin-default.svg') no-repeat right .8rem top .8rem;
+  border-radius: .2rem;
+  box-shadow: 
+    0 0 .1rem var(--color-shadow),
+    0 .1rem .3rem var(--color-shadow--light);
+  line-height: 1.3;
+  scroll-margin-top: 10rem;
+  text-align: left;
+  text-rendering: optimizeLegibility;
+  word-break: break-word;
+  word-wrap: break-word;
+
+  &--pinned {
+    background-image: url('/assets/images/pin-red.svg');
+  }
+
+  &__link {
+    align-items: center;
+    color: inherit;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1.1rem;
+    text-decoration: none;
+  }
+
+  &__content {
+    grid-column: 1 / span 2;
+    min-height: 9rem;
+  }
+
+  &__heading {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin: 0;
+    padding-right: 2.2rem;
+  }
+
+  &__text {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    font-size: 1.3rem;
+    -webkit-line-clamp: 2;
+    margin: 0;
+    overflow: hidden;
+    padding-top: .2rem;
+  }
+
+  &__people {
+    align-items: center;
+    display: flex;
+    grid-column: 1;
+
+    &__item {
+
+      &--plus {
+        color: rgba(var(--rgb-black), .5);
+        font-size: 1.2rem;
+        margin-left: .8rem;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  &__brand {
+    align-items: center;
+    display: flex;
+    height: 2.6rem;
+    justify-content: flex-end;
+    margin-left: auto;
+    width: 4.8rem;
+  }
+  
+  &__image {
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  &__thumb {
+    border-radius: 50%;
+    display: block;
+    margin-right: -.3rem;
+    outline: var(--border-style) var(--border-width--large) var(--color-white);
+  }
+
+  &__context {
+    justify-self: flex-end;
+  }
+
+  &__label {
+    display: inline-block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    grid-column: 2;
+    line-height: 1;
+    padding: .2rem .4rem;
+    text-transform: uppercase;
+
+    &--sample {
+      background-color: #fcecc5;
+      color: #a8532e;
+    }
+
+    &--hq {
+      background-color: #caf2ca;
+      color: #1a7523;
+    }
+
+    &--team {
+      background-color: #f7f4f1;
+      color: #707070;
+    }
+  }
+}

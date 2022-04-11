@@ -1,0 +1,81 @@
+.section {
+
+  &--brand {
+    grid-area: brand;
+    position: relative;
+    text-align: center;
+
+    .section__content:hover .section__logo + .section__edit {
+      opacity: 1;
+    }
+  }
+
+  &__group {
+    margin-top: 3rem;
+
+    @media (min-width: $breakpoint-huge) {
+      margin-top: 4rem;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &__logo {
+    display: inline-block;
+    height: auto;
+    margin: auto;
+    max-width: 12rem;
+  }
+
+  &--cards {
+    grid-area: cards;
+
+    @media (min-width: $breakpoint-huge) {
+      height: calc(100vh - 11.3rem); // 3rem/30px from the bottom of the viewport
+      position: sticky;
+      top: 6.9rem;
+    }
+  }
+
+  &--your-plate {
+    grid-area: your-plate;
+    padding-bottom: 3rem;
+
+    @media (min-width: $breakpoint-large) {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: $breakpoint-huge) {
+      display: block;
+    }
+  }
+
+  &__content {
+    display: inline-block;
+    padding: 0 3.5rem;
+    position: relative;
+  }
+
+  &__edit {
+    background: none;
+    background-image: url('/assets/images/gear.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.5rem;
+    border: 0;
+    cursor: pointer;
+    height: 3rem;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    top: 0;
+    transition: opacity var(--animation-duration--fast) var(--animation-timing);
+    width: 3rem;
+  }
+}

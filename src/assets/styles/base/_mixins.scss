@@ -1,0 +1,212 @@
+@mixin absolute-fill {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+@mixin animated-link($size, $selector: '&') {
+  $selector: unquote($selector);
+
+  position: relative;
+
+  #{$selector}:hover,
+  #{$selector}:active {
+    text-decoration: none;
+  }
+
+  #{$selector}::after {
+    background-color: currentColor;
+    content: '';
+    display: block;
+    height: $size;
+    margin-top: -#{$size / 2};
+    position: absolute;
+    top: 50%;
+    transform: scaleX(0);
+    transform-origin: center right;
+    transition: transform $duration-5 $timing-elastic;
+    width: 100%;
+  }
+
+  @include hover {
+    #{$selector}::after {
+      transform: scaleX(1);
+      transform-origin: center left;
+    }
+  }
+}
+
+@mixin aspect-ratio($ratio: 1 1, $selector: '> :first-child') {
+  $selector: unquote($selector);
+
+  padding-bottom: percentage(nth($ratio, 2) / nth($ratio, 1));
+  position: relative;
+
+  #{$selector} {
+    left: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+@mixin two-col-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@mixin fix($side) {
+  position: fixed;
+
+  @if $side == 'bottom' {
+    bottom: 0;
+    left: 0;
+    right: 0;
+  } @else if $side == 'bottom-left' {
+    bottom: 0;
+    left: 0;
+  } @else if $side == 'bottom-right' {
+    bottom: 0;
+    right: 0;
+  } @else if $side == 'top' {
+    left: 0;
+    right: 0;
+    top: 0;
+  } @else if $side == 'top-left' {
+    left: 0;
+    top: 0;
+  } @else if $side == 'top-right' {
+    right: 0;
+    top: 0;
+  } @else if $side == 'left' {
+    bottom: 0;
+    left: 0;
+    top: 0;
+  } @else if $side == 'right' {
+    bottom: 0;
+    right: 0;
+    top: 0;
+  }
+}
+
+@mixin flex-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+@mixin focus-bg {
+  &:focus {
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='white' stroke-width='1' stroke-dasharray='5' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    outline: none;
+  }
+}
+
+@mixin focus-ring($color: $focus-bg) {
+  &:focus {
+    outline: solid 2px $color-gold;
+    outline-offset: 2px;
+    position: relative;
+    z-index: z('default');
+  }
+}
+
+@mixin hover {
+  &:hover {
+    // The primary input mechanism of the device includes an accurate pointing device
+    @media (pointer: fine) {
+      @content;
+    }
+
+    // Target Firefox
+    @-moz-document url-prefix() {
+      @content;
+    }
+
+    // Target IE11
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      @content;
+    }
+  }
+}
+
+@mixin margin-horizontal($margin) {
+  margin-left: $margin;
+  margin-right: $margin;
+}
+
+@mixin margin-vertical($margin) {
+  margin-bottom: $margin;
+  margin-top: $margin;
+}
+
+@mixin padding-horizontal($padding) {
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+@mixin padding-vertical($padding) {
+  padding-bottom: $padding;
+  padding-top: $padding;
+}
+
+@mixin sr-only {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important;
+	clip-path: inset(50%) !important;
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important;
+}
+
+@mixin shadow-effect {
+  box-shadow: 0 .125rem .25rem 0 rgba($color-black, .025);
+  display: block;
+  transition:
+    box-shadow $duration-6 $timing-ease,
+    transform $duration-2 $timing-ease;
+
+  @include hover {
+    box-shadow: 0 .5rem 1rem 0 rgba($color-black, .075);
+    text-decoration: none;
+    transform: scale(1.04);
+  }
+}
+
+@mixin size($size) {
+  height: $size;
+  width: $size;
+}
+
+@mixin text-link($thickness: $border-width-sm) {
+  text-decoration: underline;
+  text-decoration-color: $color-gold;
+  text-decoration-thickness: $thickness;
+  text-underline-offset: 0.25rem;
+}
+
+@mixin touch-boost {
+  margin: -$spacing-3;
+  padding: $spacing-3;
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

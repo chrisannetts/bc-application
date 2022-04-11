@@ -1,0 +1,22 @@
+.adminland {
+  background-image: url('/assets/images/key.svg');
+  background-position: left 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  display: none;
+  font-size: 1.4rem;
+  height: 1.9rem;
+  opacity: .5;
+  padding-left: 2.2rem;
+  position: absolute;
+  right: 1rem;
+  top: -.1rem;
+
+  &:hover {
+    opacity: 1;
+  }  
+
+  @media (min-width: $breakpoint-large) {
+    display: block;
+  }
+}

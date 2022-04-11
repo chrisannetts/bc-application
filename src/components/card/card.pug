@@ -1,0 +1,34 @@
+mixin card(c)
+  article.card(class= c.pinned ? "card--pinned" : "")
+    a.card__link(href="#")
+      .card__content
+        h2.card__heading= c.heading
+        p.card__text= c.text
+      ul.card__people.u-list-unstyled
+        if c.people < 6
+          - var count = 0;
+          while count < c.people
+            - ++count
+            - var randomNumber = Math.floor(Math.random() * 50) + 1;
+            li.card__people__item.card__people__item--person
+              img.card__thumb(src="/assets/images/thumbs/thumb-" + randomNumber + ".jpg", height= "26", width="26")
+        else
+          - var count = 0;
+          - var total = c.people - 5 
+          while count < 5
+            - ++count
+            - var randomNumber = Math.floor(Math.random() * 50) + 1;
+            li.card__people__item.card__people__item--person
+              img.card__thumb(src="/assets/images/thumbs/thumb-" + randomNumber + ".jpg", height= "26", width="26")
+          li.card__people__item.card__people__item--plus +#{total}
+
+      if c.context
+        .card__context
+          case c.context
+            when "hq": .card__label.card__label--hq HQ
+            when "sample": .card__label.card__label--sample Sample
+            when "team": .card__label.card__label--team Team
+
+      if c.brand
+        .card__brand
+          img.card__image(src="/assets/images/clients/" + c.brand + ".svg")

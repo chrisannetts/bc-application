@@ -1,0 +1,101 @@
+// Breakpoints
+$breakpoint-tiny: 24.5em;
+$breakpoint-small: 36em;
+$breakpoint-medium: 48em;
+$breakpoint-large: 58em;
+$breakpoint-huge: 62em;
+
+// Z-index map
+$z-index: (
+  'back-to-top': 3,
+  'navbar': 2,
+  'default': 1,
+  'below': -1
+);
+
+// Scope our custom properties to the root element of the document.
+:root {
+
+  // Animation
+  --animation-duration: 200ms;
+  --animation-duration--fast: 150ms;
+  --animation-timing: ease;
+
+  // Borders
+  --border-style: solid;
+  --border-width: .1rem;
+  --border-width--large: .2rem;
+
+  // Color: RGB colors
+  --rgb-beige: 255, 255, 249;
+  --rgb-black: 0, 0, 0;
+  --rgb-blue: 27, 106, 201;
+  --rgb-blue--light: 164, 210, 255;
+  --rgb-bronze: 135, 116, 87;
+  --rgb-brown: 125, 117, 107;
+  --rgb-green: 45, 165, 98;
+  --rgb-grey: 109, 109, 109;
+  --rgb-ink: 40, 60, 70;
+  --rgb-purple: 114, 94, 173;
+  --rgb-stone: 126, 138, 144;
+  --rgb-white: 255, 255, 255;
+
+  // Color: Global colors
+  --color-black: rgb(var(--rgb-black));
+  --color-blue: rgb(var(--rgb-blue));
+  --color-blue--light: rgb(var(--rgb-blue--light));
+  --color-bronze: rgb(var(--rgb-bronze));
+  --color-bronze--opaque: rgba(var(--rgb-bronze), .2);
+  --color-brown: rgb(var(--rgb-brown));
+  --color-green: rgb(var(--rgb-green));
+  --color-grey: rgb(var(--rgb-grey));
+  --color-ink: rgb(var(--rgb-ink));
+  --color-purple: rgb(var(--rgb-purple));
+  --color-white: rgb(var(--rgb-white));
+  --color-white--opaque: rgba(var(--rgb-white), .8);
+
+  // Color: Brand
+  --color-primary: var(--color-green);
+
+  // Color: Backgrounds
+  --color-bg--main: rgb(var(--rgb-beige));
+  --color-bg--surface: rgb(var(--rgb-white));
+
+  // Color: Borders
+  --color-border: rgba(var(--rgb-ink), .15);
+  --color-border--light: rgba(var(--rgb-ink), .1);
+  --color-border--solid: rgb(var(--rgb-ink));
+
+  // Color: Shades
+  --color-shade: rgba(var(--rgb-black), .15);
+  --color-shade--dark: rgba(var(--rgb-black), .25);
+  --color-shade--light: rgba(var(--rgb-black), .03);
+
+  // Color: Shadows
+  --color-shadow: rgba(var(--rgb-black), .25);
+  --color-shadow--dark: rgba(var(--rgb-black), .35);
+  --color-shadow--light: rgba(var(--rgb-black), .1);
+
+  // Color: Text
+  --color-text: rgb(var(--rgb-ink));
+  --color-text--placeholder: rgb(var(--rgb-stone));
+  --color-text--subtle: rgb(var(--rgb-grey));
+
+  // Content
+  --content-width: 105.6rem;
+
+  // Fonts
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family--mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  --font-size-base: 10px;
+  --font-size-medium: 1.6rem;
+
+  // Padding
+  --padding-body: 6.4rem;
+  --padding-page: 1.6rem;
+}
+
+// Scope a single color custom property to the backdrop pseudo element so that we can set a background-color behind the modal.
+::backdrop {
+  --rgb-black: 0, 0, 0;
+}

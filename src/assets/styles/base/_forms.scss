@@ -1,0 +1,32 @@
+.input {
+  appearance: none;
+  background-color: var(--color-bg--surface);
+  border: var(--border-style) var(--border-width) var(--color-shade);
+  border-radius: .4rem;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1.5;
+  padding: .8rem;
+  resize: none;
+  transition: 
+    border-color var(--animation-duration) var(--animation-timing), 
+    box-shadow var(--animation-duration) var(--animation-timing);
+  width: 100%;
+
+  &::placeholder {
+    color: var(--color-text--placeholder);
+  }
+
+  &:focus {
+    border-color: var(--color-blue--light);
+    box-shadow: 0 0 .6rem rgba(var(--rgb-blue), .5);
+    outline: none;
+  }
+}
+
+input[type="checkbox"], 
+input[type="radio"] {
+  padding: 0;
+}

@@ -1,0 +1,26 @@
+*, 
+*::before, 
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+html {
+  background-color: var(--color-bg--main);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: 1.4;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-size: var(--font-size-medium);
+  letter-spacing: 0;
+  margin: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  padding-top: 6.4rem;
+}

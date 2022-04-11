@@ -1,0 +1,94 @@
+.panel {
+  background-color: var(--color-shade--light);
+  border-radius: 1rem;
+  margin-top: 1.4rem;
+  padding: 0 .5rem;
+  position: relative;
+
+  @media (min-width: $breakpoint-huge) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: $breakpoint-huge) {
+    height: 100%;
+  }
+
+  &__inner {
+    flex: 1;
+    padding: 3.2rem 1.5rem;
+
+    @media (min-width: $breakpoint-tiny) {
+      padding: 3.2rem 4.3rem;
+    }
+
+    @media (min-width: $breakpoint-huge) {
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+
+    &::-webkit-scrollbar {
+      width: .8rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(var(--rgb-black), 0.08);
+      border-radius: .8rem;
+    }
+
+    .panel--cards & {
+      padding: 1.5rem .5rem 1rem;
+    }
+  }
+
+  &__header {
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: -1.4rem;
+    z-index: z('default');
+  }
+  
+  &__title {
+    background-color: var(--color-brown);
+    border-radius: .3rem;
+    color: var(--color-white);
+    display: inline-block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+    padding: .4rem .8rem;
+    text-transform: uppercase;
+  }
+
+  &__intro {
+    font-size: 1.5rem;
+    margin: 0 0 2rem;
+    text-align: center;
+  }
+
+  &__instruction {
+    display: none;
+
+    @media (min-width: $breakpoint-medium) {
+      display: block;
+      font-size: 1.4rem;
+      margin-left: auto;
+    }
+  }
+
+  &__footer {
+    align-items: center;
+    border-top: var(--border-style) var(--border-width) rgba(var(--rgb-black), .1);
+    display: flex;
+    justify-content: center;
+    margin: 0 -.5rem;
+    padding: 1.5rem 2rem 1.5rem;
+
+    @media (min-width: $breakpoint-medium) {
+      justify-content: unset;
+    }
+  }
+}

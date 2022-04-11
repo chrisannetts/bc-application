@@ -1,0 +1,14 @@
+mixin checkbox(c)
+  .checkbox
+    label.checkbox__label
+      input.checkbox__input(
+        type="checkbox" 
+        aria-label= c.name
+      )
+      span.checkbox__button
+    .checkbox__content
+      a.checkbox__link(href="#")
+        .checkbox__name= c.name
+        .checkbox__details
+          .checkbox__context= c.context
+          span.checkbox__date= c.date

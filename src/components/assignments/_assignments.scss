@@ -1,0 +1,10 @@
+.assignments {
+  
+  &__item {
+    margin: 0;
+
+    &:not(:last-child) {
+      margin-bottom: .5rem;
+    }
+  }
+}

@@ -1,0 +1,83 @@
+.card-grid {
+  display: grid;
+  gap: 1rem;
+
+  @media (min-width: $breakpoint-small) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $breakpoint-large) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: $breakpoint-huge) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &--unfiltered:not(.card-grid--expanded) .card-grid__item--hide-mobile {
+    display: none;
+
+    @media (min-width: $breakpoint-huge) {
+      display: unset;
+    }
+  }
+
+  &__item {
+
+    &--hidden {
+      display: none;
+    }
+  }
+}
+
+$cards: ();
+$cardsReordered: ();
+
+@for $i from 1 to 28 {
+  $cards: append($cards, $i);
+}
+
+@function delete-at($list, $index) {
+  $length: length($list);
+  // convert negative index to positive index
+  $idx: if($index < 0, $length + 1 + $index, $index);
+  // index out of range
+  @if $idx <= 0 or $idx > $length {
+    @warn 'index out of range: #{$index}';
+    @return $list;
+  }
+  // create a new list
+  $result: ();
+  $i: 1;
+  @while $i <= $length {
+    @if $i != $index {
+      $result: append($result, nth($list, $i));
+    }
+    $i: $i + 1;
+  }
+  @return $result;
+}
+
+$j: null;
+
+@function shuffle($cardsReordered) {
+  @for $i from 1 through length($cards) {
+    $j: random(length($cards));
+    $cardsReordered: append($cardsReordered, nth($cards, $j), comma);
+    $cards: delete-at($cards, $j);
+  }
+  @return $cardsReordered;
+}
+
+$cardsReordered: shuffle($cardsReordered);
+
+.card-grid--recent {
+
+  .card-grid__item {
+    @for $i from 1 through length($cardsReordered) {
+      &:nth-child(#{$i}) {
+        order: nth($cardsReordered, $i);
+      }
+    }
+  }
+}

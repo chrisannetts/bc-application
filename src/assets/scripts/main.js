@@ -120,7 +120,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // When the user hits cmd/ctrl + J, display the modal and stop the body being scrolled.
   document.addEventListener('keydown', function(e) {
-    if (e.keyCode === 74 && (e.ctrlKey || e.metaKey) && !(e.shiftKey || e.altKey)) {
+    console.log(e.code);
+    if (e.code === 'KeyJ' && (e.ctrlKey || e.metaKey) && !(e.shiftKey || e.altKey)) {
       if (typeof modal.showModal === 'function') {
         modal.showModal();
         body.classList.add('u-overflow-hidden');

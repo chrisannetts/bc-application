@@ -19,6 +19,10 @@
     padding: 3.2rem 1.5rem;
 
     @media (min-width: $breakpoint-tiny) {
+      padding: 3.2rem 3rem;
+    }
+
+    @media (min-width: $breakpoint-small) {
       padding: 3.2rem 4.3rem;
     }
 

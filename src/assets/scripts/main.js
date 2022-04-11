@@ -118,14 +118,21 @@ document.addEventListener('DOMContentLoaded', function () {
     modal.hidden = true;
   }
 
+  function displayModal(e) {
+    if (typeof modal.showModal === 'function') {
+      modal.showModal();
+      body.classList.add('u-overflow-hidden');
+    }
+  }
+
+  const modalKey = document.getElementById('modalKey');
+
+  modalKey.addEventListener('click', displayModal);
+
   // When the user hits cmd/ctrl + J, display the modal and stop the body being scrolled.
   document.addEventListener('keydown', function(e) {
-    console.log(e.code);
     if (e.code === 'KeyJ' && (e.ctrlKey || e.metaKey) && !(e.shiftKey || e.altKey)) {
-      if (typeof modal.showModal === 'function') {
-        modal.showModal();
-        body.classList.add('u-overflow-hidden');
-      }
+      displayModal(e);
     }
   });
 

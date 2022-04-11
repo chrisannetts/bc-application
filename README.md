@@ -21,7 +21,7 @@ npm install
 ## Usage
 
 - Run `npm run start` run the development server
-- Run `npm run deploy` to build a production ready version of the site and deploy it to https://bc-application.chrisannetts.com
+- Run `npm run deploy` to build a production ready version of the site and deploy it to https://application.chrisannetts.com
 
 ## Development Notes
 

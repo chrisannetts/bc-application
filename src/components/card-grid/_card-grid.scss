@@ -14,11 +14,14 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  &--unfiltered:not(.card-grid--expanded) .card-grid__item--hide-mobile {
+  &--hidden {
     display: none;
+  }
 
-    @media (min-width: $breakpoint-huge) {
-      display: unset;
+  &--unfiltered:not(.card-grid--expanded) .card-grid__item--hide-mobile {
+
+    @media (max-width: $breakpoint-huge) {
+      display: none;
     }
   }
 

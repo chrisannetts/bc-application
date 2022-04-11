@@ -6,11 +6,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const cardGrid = document.querySelector('.card-grid');
   const cards = document.querySelectorAll('.card-grid__item');
   const filters = document.querySelectorAll('.filter__button');
-  const filterButtonDefault = document.getElementById('filterButtonDefault');
+  const filterButtonOrganized = document.getElementById('filterButtonOrganized');
   const filterButtonPinned = document.getElementById('filterButtonPinned');
   const filterButtonProjects = document.getElementById('filterButtonProjects');
   const filterButtonRecent = document.getElementById('filterButtonRecent');
   const filterButtonTeams = document.getElementById('filterButtonTeams');
+  const filterButtonArchivedTrashed = document.getElementById('filterButtonArchivedTrashed');
   const items = document.getElementsByClassName("card-grid__item");
   const modal = document.getElementById('dialog');
   const modalContent = document.querySelector('.modal__content');
@@ -19,6 +20,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const searchClearButton = document.querySelector('.search-form__button');
   const searchInput = document.querySelector('.search-form__input');
   const unfilteredButtons = document.querySelectorAll('.filter__button--unfiltered');
+
+  let emptyStateArchievedVisible = false;
+  let emptyStateSearchVisible = false;
 
   // Show and hide project/team cards depending on whether or not they match the user-entered input.
   filterCards = (event, tag) => {
@@ -50,26 +54,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // When a filter button is clicked, remove any active classes, and apply the active class to the targetted button.
   function handleFiltersClick(e) {
+    
     filters.forEach(node => {
       node.classList.remove('filter__button--active');
-      e.currentTarget.classList.add('filter__button--active');
-
-      // If the filter button clicked was the 'Recently viewed' button, add a modifier to re-order the cards.
-      if (e.currentTarget == filterButtonRecent) {
-        cardGrid.classList.add('card-grid--recent');
-      }
-      else {
-        cardGrid.classList.remove('card-grid--recent');
-      }
-
-      // If the filter button clicked was either the 'Show all' or 'Recently viewed' button, add a modifier.
-      if (e.currentTarget == filterButtonDefault || e.currentTarget == filterButtonRecent) {
-        cardGrid.classList.add('card-grid--unfiltered');
-      }
-      else {
-        cardGrid.classList.remove('card-grid--unfiltered');
-      }
     });
+
+    e.currentTarget.classList.add('filter__button--active');
+
+    // If the filter button clicked was the 'Recently viewed' button, add a modifier to re-order the cards.
+    if (e.currentTarget == filterButtonRecent) {
+      cardGrid.classList.add('card-grid--recent');
+    }
+    else {
+      cardGrid.classList.remove('card-grid--recent');
+    }
+
+    // If the filter button clicked was either the 'Show all' or 'Recently viewed' button, add a modifier.
+    if (e.currentTarget == filterButtonOrganized || e.currentTarget == filterButtonRecent) {
+      cardGrid.classList.add('card-grid--unfiltered');
+    }
+    else {
+      cardGrid.classList.remove('card-grid--unfiltered');
+    }
+
+    emptyStateArchievedVisible
+    emptyStateSearchVisible
+
+    // If the filter button clicked was either the 'Archieved & Trashed' button, hide everything and display an empty state.
+    if (e.currentTarget == filterButtonArchivedTrashed) {
+      cardGrid.classList.add('card-grid--hidden');
+      createArchievedEmptyState();
+    }
+    else {
+      cardGrid.classList.remove('card-grid--hidden');
+      if (emptyStateArchievedVisible || emptyStateSearchVisible) {
+        document.querySelector('.empty-state').remove();
+      }
+      emptyStateArchievedVisible = false;
+      emptyStateSearchVisible = false;
+    }
   }
 
   // Listen for clicks on the all of the filter buttons.
@@ -78,16 +101,31 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // If no cards are visible, and an empty state doesn't already exist, inject a message before the empty card container. 
-  function toggleEmptyState() {
-    let cardsEmptyState = document.querySelector('.empty-state');
+  function toggleSearchEmptyState() {
 
-    if (cardGrid.scrollHeight === 0 && !cardsEmptyState) {
-      cardGrid.insertAdjacentHTML('beforebegin', '<p class="empty-state">No matching projects or teams.</p>');
+    if (cardGrid.scrollHeight === 0 && emptyStateSearchVisible === false) {
+      if (emptyStateArchievedVisible) {
+        document.querySelector('.empty-state--archieved').remove();
+        emptyStateArchievedVisible = false;
+      }
+
+      cardGrid.insertAdjacentHTML('beforebegin', '<p class="empty-state empty-state--search">No matching projects or teams.</p>');
+      emptyStateSearchVisible = true;
     }
 
     // Where a new search query allows us to displays cards, and an empty state exists, remove the message.
-    if (cardGrid.scrollHeight != 0 && cardsEmptyState) {
-      cardsEmptyState.remove();
+    if ((cardGrid.scrollHeight !== 0 && emptyStateSearchVisible) || emptyStateArchievedVisible) {
+      document.querySelector('.empty-state--search').remove();
+      emptyStateSearchVisible = false;
+    }
+  }
+
+  // If it doesn't already exist, create an empty state for the 'Archieved and Trashed' filter.
+  function createArchievedEmptyState() {
+
+    if (cardGrid.scrollHeight === 0 && emptyStateArchievedVisible === false) {
+      cardGrid.insertAdjacentHTML('beforebegin', '<p class="empty-state empty-state--archieved">There aren’t any archived or trashed projects. Trashed projects are permanently deleted after 25 days.</p>');
+      emptyStateArchievedVisible = true;
     }
   }
 
@@ -97,6 +135,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // If the search input is empty, disable the 'reset' button.
     if (searchInput.value == '') {
       searchClearButton.setAttribute('disabled', '');
+
+      if (filterButtonArchivedTrashed.classList.contains('filter__button--active')) {
+        createArchievedEmptyState();
+      }
     }
     else {
       searchClearButton.removeAttribute('disabled', '');
@@ -110,8 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     
     // Check whether we need to create or remove an empty state.
-    toggleEmptyState();
-
+    toggleSearchEmptyState();
   });
 
   // If a browser doesn't support the modal, then hide the modal contents.
@@ -185,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
     searchClearButton.setAttribute('disabled', '');
 
     // Check whether we need to create or remove an empty state.
-    toggleEmptyState();
+    toggleSearchEmptyState();
   })
 
   // Turn the cards object into an array, and remove the first six.

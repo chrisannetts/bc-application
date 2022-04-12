@@ -78,9 +78,9 @@
 
   &__thumb {
     border-radius: 50%;
+    box-shadow: 0 0 0 var(--border-width--large) var(--color-white);
     display: block;
     margin-right: -.3rem;
-    outline: var(--border-style) var(--border-width--large) var(--color-white);
   }
 
   &__context {
